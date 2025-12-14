@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Document</title>
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+</head>
+<body class="d-flex vh-100 justify-content-center align-items-center" style="background-color: rgb(234, 228, 210);">
+    <div class="container text-center">
+    <h1 style="color:rgb(30, 81, 169); font-size:50px;"><i class="fab fa-qq" style="color: #2e5394;"></i> URL Shrinker</h1>
+    <p style="color:rgb(134, 142, 150); font-size:15px;">write your url in box below to shorten it ...</p>
+    <form action="/shortUrls" method="POST" class="my-4 form-inline justify-content-center">
+        <label for="fullUrl" class="sr-only">Urll</label>
+        <input required placeholder="Url" type="url"
+         name="fullUrl" id="fullUrl" class="form-control col mr-2">
+        <button class="btn btn-success" type="submit">Shrink</button>
+    </form>
+
+    <div class="d-flex justify-content-center table-responsive">
+    <table class="table table-striped">
+        <thead>
+           <tr>
+              <th>Full url</th>
+              <th>Short url</th>
+              <th>Clicks</th>
+           </tr> 
+        </thead>
+        <tbody>
+            <% shortUrls.forEach(shortUrl => { %>
+             <tr>
+               <td><a href="<%= shortUrl.full %>" target="_blank"><%= shortUrl.full %></a></td>
+                <td><a href="<%= shortUrl.short %>" target="_blank"><%= shortUrl.short %></a></td>
+                <td><%= shortUrl.clicks %></td>
+            </tr>  
+            <% }) %>
+        </tbody>
+    </table>
+    </div>
+    </div>
+</body>
+</html>
